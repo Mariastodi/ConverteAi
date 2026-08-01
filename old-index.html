@@ -1,0 +1,976 @@
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ConverteAí— Reciclagem que vira ação social</title>
+<meta name="description" content="ConverteAí: coletamos tampinhas, garrafas PET, latinhas e lacres para transformar em ação social. Faça parte dessa corrente.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul-bebe: #cfe8f3;
+    --azul-bebe-2: #a9d8ec;
+    --amarelo: #ffe08a;
+    --amarelo-2: #ffd35c;
+    --verde: #bfe3c8;
+    --verde-2: #9ad3ac;
+    --creme: #fffbf2;
+    --branco: #ffffff;
+    --texto: #274653;
+    --texto-suave: #5c7a80;
+    --linha: #e4ecec;
+    --raio: 22px;
+    --raio-sm: 14px;
+    --sombra: 0 10px 30px rgba(39,70,83,0.08);
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--texto);
+    background:var(--creme);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    line-height:1.15;
+  }
+  a{ text-decoration:none; color:inherit; }
+  ul{ list-style:none; }
+  img{ max-width:100%; display:block; }
+  button{ font-family:inherit; cursor:pointer; border:none; }
+  .container{
+    width:100%;
+    max-width:1160px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  section{ position:relative; }
+  .eyebrow{
+    display:inline-block;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:600;
+    font-size:0.8rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:#3f8a63;
+    background:var(--verde);
+    padding:6px 14px;
+    border-radius:100px;
+    margin-bottom:16px;
+  }
+  .section-head{ max-width:640px; margin-bottom:48px; }
+  .section-head h2{ font-size:clamp(1.8rem, 3.2vw, 2.5rem); margin-bottom:14px; }
+  .section-head p{ color:var(--texto-suave); font-size:1.05rem; line-height:1.6; }
+
+  /* Reveal on scroll */
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+  .reveal-stagger > *{ opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal-stagger.is-visible > *{ opacity:1; transform:translateY(0); }
+  .reveal-stagger.is-visible > *:nth-child(1){ transition-delay:.05s; }
+  .reveal-stagger.is-visible > *:nth-child(2){ transition-delay:.15s; }
+  .reveal-stagger.is-visible > *:nth-child(3){ transition-delay:.25s; }
+  .reveal-stagger.is-visible > *:nth-child(4){ transition-delay:.35s; }
+  .reveal-stagger.is-visible > *:nth-child(5){ transition-delay:.45s; }
+  .reveal-stagger.is-visible > *:nth-child(6){ transition-delay:.55s; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .reveal, .reveal-stagger > *{ opacity:1; transform:none; transition:none; }
+    .float, .float-slow, .float-rev{ animation:none !important; }
+  }
+
+  :focus-visible{ outline:3px solid #2b6f8f; outline-offset:2px; border-radius:6px; }
+
+  /* Progress trail - signature scroll element */
+  .trilha{
+    position:fixed;
+    right:18px;
+    top:50%;
+    transform:translateY(-50%);
+    width:6px;
+    height:220px;
+    background:rgba(39,70,83,0.08);
+    border-radius:100px;
+    z-index:60;
+  }
+  .trilha-fill{
+    width:100%;
+    height:0%;
+    background:var(--verde-2);
+    border-radius:100px;
+    transition:height .1s linear;
+  }
+  @media (max-width:900px){ .trilha{ display:none; } }
+
+  /* Header */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:50;
+    background:rgba(255,251,242,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease, box-shadow .3s ease;
+  }
+  header.scrolled{
+    border-color:var(--linha);
+    box-shadow:0 4px 18px rgba(39,70,83,0.06);
+  }
+  .nav-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+    max-width:1160px;
+    margin:0 auto;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:1.2rem;
+    color:var(--texto);
+  }
+  .logo-mark{
+    width:36px; height:36px;
+    border-radius:50%;
+    background:var(--amarelo);
+    display:flex; align-items:center; justify-content:center;
+  }
+  nav ul{ display:flex; gap:30px; }
+  nav a{
+    font-weight:600;
+    font-size:0.95rem;
+    color:var(--texto);
+    position:relative;
+    padding:4px 0;
+  }
+  nav a::after{
+    content:'';
+    position:absolute; left:0; bottom:-2px;
+    width:0; height:2px;
+    background:var(--amarelo-2);
+    transition:width .25s ease;
+  }
+  nav a:hover::after{ width:100%; }
+  .btn{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:600;
+    font-size:0.95rem;
+    padding:12px 24px;
+    border-radius:100px;
+    display:inline-block;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{ background:var(--amarelo); color:#5a4400; box-shadow:0 6px 16px rgba(255,208,80,0.35); }
+  .btn-primary:hover{ background:var(--amarelo-2); }
+  .btn-outline{ background:transparent; color:var(--texto); border:2px solid var(--texto); }
+  .btn-outline:hover{ background:var(--texto); color:var(--creme); }
+  .btn-ghost{ background:var(--branco); color:var(--texto); box-shadow:var(--sombra); }
+
+  .hamb{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    padding:8px;
+  }
+  .hamb span{ width:24px; height:3px; background:var(--texto); border-radius:4px; transition:.3s; }
+  .nav-cta{ display:flex; align-items:center; gap:18px; }
+
+  @media (max-width:860px){
+    nav{
+      position:fixed;
+      top:68px; left:0; right:0;
+      background:var(--creme);
+      border-bottom:1px solid var(--linha);
+      padding:20px 24px;
+      transform:translateY(-140%);
+      transition:transform .3s ease;
+    }
+    nav.open{ transform:translateY(0); }
+    nav ul{ flex-direction:column; gap:18px; }
+    .nav-cta .btn-outline{ display:none; }
+    .hamb{ display:flex; }
+  }
+
+  /* Hero */
+  .hero{
+    padding:150px 0 90px;
+    background:var(--azul-bebe);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .container{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:40px;
+    align-items:center;
+  }
+  .hero-blob{
+    position:absolute;
+    border-radius:50%;
+    z-index:0;
+  }
+  .hero-blob.b1{ width:260px; height:260px; background:var(--azul-bebe-2); top:-60px; left:-80px; opacity:.6; }
+  .hero-blob.b2{ width:180px; height:180px; background:var(--amarelo); bottom:-40px; left:38%; opacity:.5; }
+  .hero-text{ position:relative; z-index:1; }
+  .hero-text h1{
+    font-size:clamp(2.3rem, 5vw, 3.4rem);
+    margin-bottom:20px;
+  }
+  .hero-text h1 span{ color:#2f7a4f; }
+  .hero-text p{
+    font-size:1.1rem;
+    color:var(--texto-suave);
+    max-width:480px;
+    margin-bottom:30px;
+    line-height:1.6;
+  }
+  .hero-cta{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:38px; }
+  .hero-stats{ display:flex; gap:34px; flex-wrap:wrap; }
+  .hero-stat b{
+    font-family:'Baloo 2', sans-serif;
+    font-size:1.7rem;
+    display:block;
+    color:var(--texto);
+  }
+  .hero-stat span{ font-size:0.85rem; color:var(--texto-suave); }
+
+  /* Hero signature: orbit of materials */
+  .orbit{
+    position:relative;
+    height:420px;
+    z-index:1;
+  }
+  .orbit-center{
+    position:absolute;
+    width:150px; height:150px;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    background:var(--branco);
+    border-radius:50%;
+    box-shadow:var(--sombra);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    text-align:center;
+    font-size:0.95rem;
+    color:var(--texto);
+    padding:10px;
+  }
+  .badge{
+    position:absolute;
+    width:104px; height:104px;
+    border-radius:50%;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    box-shadow:var(--sombra);
+    font-size:0.72rem;
+    font-weight:600;
+    text-align:center;
+    gap:4px;
+    color:var(--texto);
+  }
+  .badge svg{ width:34px; height:34px; }
+  .badge.tampinha{ background:var(--amarelo); top:0; left:14%; animation:float 5s ease-in-out infinite; }
+  .badge.pet{ background:var(--azul-bebe-2); top:8%; right:2%; animation:float 6s ease-in-out infinite .4s; }
+  .badge.lata{ background:var(--verde); bottom:6%; left:0; animation:float 5.5s ease-in-out infinite .2s; }
+  .badge.lacre{ background:#f6c9c9; bottom:0; right:14%; animation:float 6.5s ease-in-out infinite .6s; }
+  @keyframes float{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-14px); }
+  }
+
+  @media (max-width:900px){
+    .hero .container{ grid-template-columns:1fr; }
+    .orbit{ height:340px; margin-top:10px; }
+  }
+
+  /* Sobre */
+  .sobre{ padding:110px 0; }
+  .sobre .container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .sobre-art{
+    background:var(--verde);
+    border-radius:var(--raio);
+    padding:40px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .sobre-art .mini-card{
+    background:var(--branco);
+    border-radius:var(--raio-sm);
+    padding:18px;
+    text-align:center;
+  }
+  .sobre-art .mini-card b{
+    font-family:'Baloo 2', sans-serif;
+    font-size:1.5rem;
+    display:block;
+    color:#2f7a4f;
+  }
+  .sobre-art .mini-card span{ font-size:0.82rem; color:var(--texto-suave); }
+  .sobre-text p{ color:var(--texto-suave); line-height:1.7; margin-bottom:16px; font-size:1.02rem; }
+
+  @media (max-width:860px){
+    .sobre .container{ grid-template-columns:1fr; }
+    .sobre-art{ order:2; }
+  }
+
+  /* Como ajudar - materiais */
+  .materiais{ padding:100px 0; background:var(--branco); }
+  .materiais-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+  }
+  .material-card{
+    background:var(--creme);
+    border-radius:var(--raio);
+    padding:30px 22px;
+    text-align:center;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .material-card:hover{ transform:translateY(-6px); box-shadow:var(--sombra); }
+  .material-icon{
+    width:64px; height:64px;
+    border-radius:50%;
+    margin:0 auto 18px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .material-icon svg{ width:30px; height:30px; }
+  .material-card h3{ font-size:1.05rem; margin-bottom:8px; }
+  .material-card p{ font-size:0.88rem; color:var(--texto-suave); line-height:1.5; }
+  @media (max-width:860px){ .materiais-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:520px){ .materiais-grid{ grid-template-columns:1fr; } }
+
+  /* Parceiros */
+  .parceiros{ padding:100px 0; }
+  .parceiros-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+  }
+  .parceiro-card{
+    background:var(--branco);
+    border-radius:var(--raio-sm);
+    padding:26px 18px;
+    text-align:center;
+    box-shadow:var(--sombra);
+  }
+  .parceiro-avatar{
+    width:56px; height:56px;
+    border-radius:50%;
+    margin:0 auto 14px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    color:#fff;
+  }
+  .parceiro-card h4{ font-size:0.95rem; font-family:'Inter'; font-weight:600; margin-bottom:4px; }
+  .parceiro-card span{ font-size:0.78rem; color:var(--texto-suave); }
+  @media (max-width:860px){ .parceiros-grid{ grid-template-columns:1fr 1fr; } }
+
+  /* Pontos de coleta */
+  .pontos{ padding:100px 0; background:var(--azul-bebe); }
+  .pontos-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+  }
+  .ponto-card{
+    background:var(--branco);
+    border-radius:var(--raio);
+    padding:26px;
+    box-shadow:var(--sombra);
+  }
+  .ponto-card .tag{
+    display:inline-block;
+    font-size:0.72rem;
+    font-weight:700;
+    background:var(--amarelo);
+    padding:4px 10px;
+    border-radius:100px;
+    margin-bottom:12px;
+  }
+  .ponto-card h3{ font-size:1.05rem; margin-bottom:6px; }
+  .ponto-card p{ font-size:0.88rem; color:var(--texto-suave); margin-bottom:4px; }
+  @media (max-width:860px){ .pontos-grid{ grid-template-columns:1fr; } }
+
+  /* Formulário */
+  .participe{ padding:110px 0; }
+  .participe .container{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:50px;
+  }
+  .participe-info h2{ font-size:clamp(1.8rem,3vw,2.4rem); margin-bottom:16px; }
+  .participe-info p{ color:var(--texto-suave); line-height:1.7; margin-bottom:24px; }
+  .participe-info ul li{
+    display:flex; gap:10px; align-items:flex-start;
+    margin-bottom:14px; font-size:0.95rem; color:var(--texto);
+  }
+  .participe-info ul li .dot{
+    width:8px; height:8px; border-radius:50%; background:#2f7a4f; margin-top:7px; flex-shrink:0;
+  }
+  form{
+    background:var(--branco);
+    border-radius:var(--raio);
+    padding:36px;
+    box-shadow:var(--sombra);
+  }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .field{ margin-bottom:18px; }
+  .field label{ display:block; font-size:0.85rem; font-weight:600; margin-bottom:6px; }
+  .field input, .field select, .field textarea{
+    width:100%;
+    padding:12px 14px;
+    border-radius:var(--raio-sm);
+    border:2px solid var(--linha);
+    font-family:inherit;
+    font-size:0.95rem;
+    color:var(--texto);
+    background:var(--creme);
+    transition:border-color .2s ease;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:none;
+    border-color:var(--azul-bebe-2);
+  }
+  .field textarea{ resize:vertical; min-height:100px; }
+  .radio-group{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:20px; }
+  .radio-group label{
+    display:flex; align-items:center; gap:8px;
+    background:var(--creme);
+    border:2px solid var(--linha);
+    padding:10px 16px;
+    border-radius:100px;
+    font-size:0.88rem;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .radio-group input{ accent-color:#2f7a4f; }
+  .form-msg{
+    margin-top:14px;
+    font-size:0.9rem;
+    font-weight:600;
+    color:#2f7a4f;
+    display:none;
+  }
+  .form-msg.show{ display:block; }
+  @media (max-width:860px){
+    .participe .container{ grid-template-columns:1fr; }
+    .form-row{ grid-template-columns:1fr; }
+  }
+
+  /* Mídia */
+  .midia{ padding:100px 0; background:var(--branco); }
+  .midia-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+  }
+  .midia-card{
+    border-radius:var(--raio);
+    overflow:hidden;
+    background:var(--creme);
+    box-shadow:var(--sombra);
+  }
+  .midia-thumb{
+    height:170px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .midia-thumb svg{ width:56px; height:56px; }
+  .midia-card .midia-info{ padding:18px; }
+  .midia-card .midia-info span{ font-size:0.75rem; color:var(--texto-suave); font-weight:600; }
+  .midia-card .midia-info h4{ font-family:'Inter'; font-size:0.98rem; font-weight:600; margin-top:4px; }
+  @media (max-width:860px){ .midia-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:520px){ .midia-grid{ grid-template-columns:1fr; } }
+
+  /* Footer */
+  footer{ background:#274653; color:#e9f3f0; padding:60px 0 26px; }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:40px;
+    margin-bottom:40px;
+  }
+  footer h4{ font-family:'Baloo 2'; font-size:1.05rem; margin-bottom:16px; color:#fff; }
+  footer p{ color:#b7cbd0; font-size:0.92rem; line-height:1.6; max-width:320px; }
+  footer ul li{ margin-bottom:10px; }
+  footer ul li a{ color:#cfe0e3; font-size:0.9rem; transition:color .2s; }
+  footer ul li a:hover{ color:var(--amarelo); }
+  .footer-logo{ display:flex; align-items:center; gap:10px; font-family:'Baloo 2'; font-weight:700; font-size:1.15rem; color:#fff; margin-bottom:14px; }
+  .social-row{ display:flex; gap:12px; margin-top:16px; }
+  .social-row a{
+    width:38px; height:38px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.08);
+    display:flex; align-items:center; justify-content:center;
+    transition:background .2s;
+  }
+  .social-row a:hover{ background:var(--amarelo); }
+  .social-row svg{ width:16px; height:16px; stroke:#fff; }
+  .social-row a:hover svg{ stroke:#274653; }
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.1);
+    padding-top:22px;
+    font-size:0.82rem;
+    color:#9db9bd;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  @media (max-width:760px){ .footer-grid{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<div class="trilha" aria-hidden="true"><div class="trilha-fill" id="trilhaFill"></div></div>
+
+<header id="siteHeader">
+  <div class="nav-wrap">
+    <a href="#topo" class="logo">
+      <span class="logo-mark">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5a4400" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 4h8"/>
+          <path d="M9 4v2h6V4"/>
+          <path d="M7 8h10l-1 12H8L7 8Z"/>
+          <path d="M10 11h4"/>
+          <path d="M10 15h4"/>
+        </svg>
+      </span>
+        ConverteAí
+    </a>
+    <nav id="siteNav">
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#materiais">Como ajudar</a></li>
+        <li><a href="#parceiros">Parceiros</a></li>
+        <li><a href="#pontos">Pontos de coleta</a></li>
+        <li><a href="#midia">Ações</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="#participe" class="btn btn-outline">Quero ajudar</a>
+      <button class="hamb" id="hambBtn" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="topo">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-blob b1"></div>
+    <div class="hero-blob b2"></div>
+    <div class="container">
+      <div class="hero-text">
+        <h1>Cada tampinha fecha <span>um elo</span> de solidariedade</h1>
+        <p>Coletamos tampinhas, garrafas PET, latinhas e lacres para transformar resíduo em renda, e renda em ação social para quem precisa. Faz parte da corrente com a gente.</p>
+        <div class="hero-cta">
+          <a href="#participe" class="btn btn-primary">Quero doar ou ser voluntário</a>
+          <a href="#pontos" class="btn btn-ghost">Ver pontos de coleta</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><b data-count="3.2" data-suffix="t">0t</b><span>de material coletado</span></div>
+          <div class="hero-stat"><b data-count="47" data-suffix="">0</b><span>pontos de coleta ativos</span></div>
+          <div class="hero-stat"><b data-count="120" data-suffix="+">0</b><span>famílias já apoiadas</span></div>
+        </div>
+      </div>
+      <div class="orbit">
+        <div class="orbit-center">Transforma<br>Ai</div>
+        <div class="badge tampinha">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#5a4400" stroke-width="2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>
+          Tampinhas
+        </div>
+        <div class="badge pet">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1c5a75" stroke-width="2"><path d="M9 3h6v3l2 2v11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V8l2-2z"/><path d="M9 11h6"/></svg>
+          Garrafas PET
+        </div>
+        <div class="badge lata">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#245c3e" stroke-width="2"><rect x="7" y="4" width="10" height="16" rx="2"/><path d="M9 4V2h6v2"/></svg>
+          Latinhas
+        </div>
+        <div class="badge lacre">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8a3b3b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 5h10"/>
+            <path d="M8 5v2h8V5"/>
+            <path d="M7 8h10l-1 12H8L7 8Z"/>
+            <path d="M10 11h4"/>
+          </svg>
+          Lacres
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="sobre" id="sobre">
+    <div class="container">
+      <div class="sobre-text reveal">
+        <span class="eyebrow">Sobre o projeto</span>
+        <h2>Reciclagem que também recicla oportunidades</h2>
+        <p>O ConverteAí nasceu de um grupo de amigos que percebeu que tampinha, garrafa PET, latinha e lacre de alumínio, materiais que muita gente ainda descarta sem pensar duas vezes, podem virar renda quando coletados e vendidos para cooperativas de reciclagem.</p>
+        <p>Toda a renda arrecadada com a venda desses materiais é revertida em ação social direta: cestas básicas, kits de higiene, roupas e apoio a famílias em situação de vulnerabilidade na nossa região.</p>
+        <p>Hoje somos uma rede de pontos de coleta, parceiros e voluntários que cresce a cada ação, sendo um elo por vez.</p>
+      </div>
+      <div class="sobre-art reveal">
+        <div class="mini-card"><b>2026</b><span>ano de fundação</span></div>
+        <div class="mini-card"><b>10</b><span>ações sociais realizadas</span></div>
+        <div class="mini-card"><b>30+</b><span>voluntários ativos</span></div>
+        <div class="mini-card"><b>100%</b><span>revertido em ação social</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATERIAIS -->
+  <section class="materiais" id="materiais">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Como ajudar</span>
+        <h2>O que a gente recolhe</h2>
+        <p>Você pode separar em casa e levar até um ponto de coleta perto de você. Todo material ajuda, não precisa ser em grande quantidade.</p>
+      </div>
+      <div class="materiais-grid reveal-stagger">
+        <div class="material-card">
+          <div class="material-icon" style="background:var(--amarelo)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5a4400" stroke-width="2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Tampinhas</h3>
+          <p>De garrafa PET, de leite, de refrigerante. Qualquer cor e tamanho.</p>
+        </div>
+        <div class="material-card">
+          <div class="material-icon" style="background:var(--azul-bebe-2)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1c5a75" stroke-width="2"><path d="M9 3h6v3l2 2v11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V8l2-2z"/><path d="M9 11h6"/></svg>
+          </div>
+          <h3>Garrafas PET</h3>
+          <p>De preferência limpas e amassadas, para ocupar menos espaço no transporte.</p>
+        </div>
+        <div class="material-card">
+          <div class="material-icon" style="background:var(--verde)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#245c3e" stroke-width="2"><rect x="7" y="4" width="10" height="16" rx="2"/><path d="M9 4V2h6v2"/></svg>
+          </div>
+          <h3>Latinhas</h3>
+          <p>De alumínio, amassadas para facilitar o armazenamento e transporte.</p>
+        </div>
+        <div class="material-card">
+          <div class="material-icon" style="background:#f6c9c9">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8a3b3b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 5h10"/>
+              <path d="M8 5v2h8V5"/>
+              <path d="M7 8h10l-1 12H8L7 8Z"/>
+              <path d="M10 11h4"/>
+            </svg>
+          </div>
+          <h3>Lacres de latinha</h3>
+          <p>Aqueles anéis de alumínio que soltam da latinha. Guarde num potinho!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCEIROS -->
+  <section class="parceiros" id="parceiros">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Parceiros</span>
+        <h2>Quem caminha junto com a gente</h2>
+        <p>Empresas, cooperativas e coletivos que apoiam o ConverteAí com espaço, transporte, divulgação ou compra dos materiais coletados.</p>
+      </div>
+      <div class="parceiros-grid reveal-stagger">
+        <div class="parceiro-card">
+          <div class="parceiro-avatar" style="background:#2f7a4f">CS</div>
+          <h4>Cooperativa sei la</h4>
+          <span>Compra e triagem</span>
+        </div>
+        <div class="parceiro-card">
+          <div class="parceiro-avatar" style="background:#1c5a75">PD</div>
+          <h4>Pizzaria Sabor Divino</h4>
+          <span>Ponto de coleta</span>
+        </div>
+        <div class="parceiro-card">
+          <div class="parceiro-avatar" style="background:#c98a2c">OL</div>
+          <h4>Oficina Leão</h4>
+          <span>Logística</span>
+        </div>
+        <div class="parceiro-card">
+          <div class="parceiro-avatar" style="background:#8a3b3b">EP</div>
+          <h4>Escola Piamarta Montese</h4>
+          <span>Educação ambiental</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PONTOS DE COLETA -->
+  <section class="pontos" id="pontos">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Pontos de coleta</span>
+        <h2>Leve seu material até um ponto perto de você</h2>
+        <p>Confira endereço e horário de funcionamento de cada ponto parceiro.</p>
+      </div>
+      <div class="pontos-grid reveal-stagger">
+        <div class="ponto-card">
+          <span class="tag">Ponto fixo</span>
+          <h3>Comunidade Novo Êxodo</h3>
+          <p>Rua armando monteiro, 95 - Vila União</p>
+          <p>Seg e sáb, 18h às 20h</p>
+        </div>
+        <div class="ponto-card">
+          <span class="tag">Ponto fixo</span>
+          <h3>Pizzaria Sabor Divino</h3>
+          <p>R. Suiça, 890 A - Manoel Sátiro</p>
+          <p>Seg a Seg, 17h às 23:30h</p>
+        </div>
+        <div class="ponto-card">
+          <span class="tag">Escola parceira</span>
+          <h3>Escola Piamarta Montese</h3>
+          <p>R. Padre João Piamarta, 161 - Bom Futuro</p>
+          <p>Seg a sex, 7h às 18h</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTICIPE / FORMULÁRIO -->
+  <section class="participe" id="participe">
+    <div class="container">
+      <div class="participe-info reveal">
+        <span class="eyebrow">Participe</span>
+        <h2>Quero fazer parte dessa corrente</h2>
+        <p>Você pode ajudar de mais de um jeito: virando voluntário nas ações, doando itens que ainda estão em bom estado, ou nos contando que quer contribuir de outra forma. Preencha o formulário que a gente entra em contato.</p>
+        <ul>
+          <li><span class="dot"></span> Voluntariado em coletas e ações sociais</li>
+          <li><span class="dot"></span> Doação de roupas, kits de higiene e alimentos</li>
+          <li><span class="dot"></span> Parcerias institucionais e apoio logístico</li>
+        </ul>
+      </div>
+      <form id="participeForm" class="reveal">
+        <div class="form-row">
+          <div class="field">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" name="nome" required placeholder="Seu nome">
+          </div>
+          <div class="field">
+            <label for="telefone">Telefone / WhatsApp</label>
+            <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000">
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required placeholder="voce@email.com">
+        </div>
+
+        <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:10px;">Como você quer ajudar?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="tipo" value="voluntario" checked> Ser voluntário(a)</label>
+          <label><input type="radio" name="tipo" value="doacao"> Fazer uma doação</label>
+          <label><input type="radio" name="tipo" value="outro"> Outra forma</label>
+        </div>
+
+        <div class="field">
+          <label for="mensagem">Conte um pouco mais (o que deseja doar, disponibilidade, etc.)</label>
+          <textarea id="mensagem" name="mensagem" placeholder="Ex: tenho roupas de inverno e um kit de higiene para doar"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;">Enviar</button>
+        <p class="form-msg" id="formMsg">Recebemos sua mensagem! Em breve alguém da equipe entra em contato. 💛</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- MÍDIA -->
+  <section class="midia" id="midia">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Ações realizadas</span>
+        <h2>O que já fizemos juntos</h2>
+        <p>Um registro das entregas e mutirões que a corrente do ConverteAíjá tornou possível.</p>
+      </div>
+      <div class="midia-grid reveal-stagger">
+        <div class="midia-card">
+          <div class="midia-thumb" style="background:var(--amarelo)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5a4400" stroke-width="1.6"><path d="M20 7H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1z"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+          </div>
+          <div class="midia-info">
+            <span>Agosto 2026</span>
+            <h4>Ação social voltada ao Dia Dos Pais</h4>
+          </div>
+        </div>
+        <div class="midia-card">
+          <div class="midia-thumb" style="background:var(--azul-bebe-2)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1c5a75" stroke-width="1.6"><path d="M12 2l3 7h7l-5.5 4.2L18.5 21 12 16.8 5.5 21l2-7.8L2 9h7z"/></svg>
+          </div>
+          <div class="midia-info">
+            <span>Setembro 2026</span>
+            <h4>Mutirão de Saúde em um só dia</h4>
+          </div>
+        </div>
+        <div class="midia-card">
+          <div class="midia-thumb" style="background:var(--verde)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#245c3e" stroke-width="1.6"><path d="M4 21v-7a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v7"/><path d="M9 21V12h6v9"/></svg>
+          </div>
+          <div class="midia-info">
+            <span>Outubro 2025</span>
+            <h4>Ação social voltada ao Dia Das Crianças</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <span class="logo-mark" style="background:var(--amarelo)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5a4400" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 4h8"/>
+              <path d="M9 4v2h6V4"/>
+              <path d="M7 8h10l-1 12H8L7 8Z"/>
+              <path d="M10 11h4"/>
+              <path d="M10 15h4"/>
+            </svg>
+          </span>
+          ConverteAí
+        </div>
+        <p>Reciclagem que vira ação social. Cada tampinha, garrafa, latinha e lacre coletado fecha mais um elo dessa corrente.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.6L3 21l1.9-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg></a>
+          <a href="#" aria-label="E-mail"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#sobre">Sobre o projeto</a></li>
+          <li><a href="#materiais">Como ajudar</a></li>
+          <li><a href="#parceiros">Parceiros</a></li>
+          <li><a href="#pontos">Pontos de coleta</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:contato@elorecicla.org">contato@elorecicla.org</a></li>
+          <li><a href="tel:+5500000000000">(00) 00000-0000</a></li>
+          <li><a href="#participe">Quero ser voluntário(a)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ConverteAí. Todos os direitos reservados.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header shadow on scroll
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive:true });
+
+  // Mobile menu
+  const hamb = document.getElementById('hambBtn');
+  const nav = document.getElementById('siteNav');
+  hamb.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    hamb.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    hamb.setAttribute('aria-expanded', false);
+  }));
+
+  // Scroll progress trail
+  const trilhaFill = document.getElementById('trilhaFill');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    trilhaFill.style.height = scrolled + '%';
+  }, { passive:true });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Animated counters
+  const counters = document.querySelectorAll('[data-count]');
+  const counterIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        const el = entry.target;
+        const target = parseFloat(el.getAttribute('data-count'));
+        const suffix = el.getAttribute('data-suffix') || '';
+        const isDecimal = target % 1 !== 0;
+        let current = 0;
+        const duration = 1400;
+        const start = performance.now();
+        function tick(now){
+          const progress = Math.min((now - start) / duration, 1);
+          current = target * progress;
+          el.textContent = (isDecimal ? current.toFixed(1) : Math.round(current)) + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        counterIO.unobserve(el);
+      }
+    });
+  }, { threshold:0.5 });
+  counters.forEach(c => counterIO.observe(c));
+
+  const WHATSAPP_NUMERO = '5585981370578';
+  const form = document.getElementById('participeForm');
+  const formMsg = document.getElementById('formMsg');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nome = document.getElementById('nome').value.trim();
+    const telefone = document.getElementById('telefone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const tipo = form.querySelector('input[name="tipo"]:checked').nextSibling.textContent.trim();
+    const mensagem = document.getElementById('mensagem').value.trim();
+    const texto = 'Ola, ConverteAí!\nQuero ajudar como: ' + tipo + '\n\nNome: ' + nome + '\nTelefone: ' + telefone + '\nE-mail: ' + email + '\nMensagem: ' + (mensagem || '(nao informado)');
+    const link = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(texto);
+    window.open(link, '_blank');
+    formMsg.textContent = 'Abrindo o WhatsApp com sua mensagem pronta. E so confirmar o envio por la!';
+    formMsg.classList.add('show');
+    form.reset();
+    setTimeout(() => formMsg.classList.remove('show'), 6000);
+  });
+</script>
+
+</body>
+</html>
