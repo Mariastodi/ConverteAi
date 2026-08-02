@@ -1081,6 +1081,12 @@ footer ul li a:hover {
   margin-bottom: 14px;
 }
 
+.footer-logo-image {
+  width: 30px;
+  height: auto;
+  display: block;
+}
+
 .social-row {
   display: flex;
   gap: 12px;

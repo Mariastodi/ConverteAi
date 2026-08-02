@@ -7,15 +7,7 @@ function Footer({ navLinks }) {
         <div className="footer-grid">
           <div>
             <div className="footer-logo">
-              <span className="logo-mark" style={{ background: 'var(--amarelo)' }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5a4400" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M8 4h8" />
-                  <path d="M9 4v2h6V4" />
-                  <path d="M7 8h10l-1 12H8L7 8Z" />
-                  <path d="M10 11h4" />
-                  <path d="M10 15h4" />
-                </svg>
-              </span>
+              <img src="/logo.webp" alt="ConverteAí" className="footer-logo-image" />
               ConverteAí
             </div>
             <p>
