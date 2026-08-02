@@ -5,6 +5,23 @@ function Participate() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const form = event.currentTarget;
+    const nome = form.nome.value.trim();
+    const tipo = form.tipo.value;
+    const mensagemExtra = form.mensagem.value.trim();
+
+    const tipoLabel = tipo === 'voluntario'
+      ? 'ser voluntário(a)'
+      : tipo === 'doacao'
+      ? 'fazer uma doação'
+      : 'contribuir de outra forma';
+
+    let text = `Oi, vim do site da Converte Aí. Meu nome é ${nome}. Quero ajudar ${tipoLabel}`;
+    if (mensagemExtra) {
+      text += `. ${mensagemExtra}`;
+    }
+    const encoded = encodeURIComponent(text);
+    window.open(`https://wa.me/5585981370578?text=${encoded}`, '_blank');
     setSubmitted(true);
   };
 
