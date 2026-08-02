@@ -1123,6 +1123,26 @@ footer ul li a:hover {
   gap: 10px;
 }
 
+.footer-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-logo-small {
+  width: 24px;
+  height: auto;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.footer-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 @media (max-width: 760px) {
   .footer-grid {
     grid-template-columns: 1fr;

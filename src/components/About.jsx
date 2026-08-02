@@ -8,7 +8,7 @@ function About({ cards }) {
           <span className="eyebrow">Sobre o projeto</span>
           <h2>Reciclagem que também recicla oportunidades</h2>
           <p>
-            O ConverteAí nasceu de um grupo de amigos que percebeu que tampinha, garrafa PET, latinha e lacre de alumínio, materiais que muita gente ainda descarta sem pensar duas vezes, podem virar renda quando coletados e vendidos para cooperativas de reciclagem.
+            O ConverteAí nasceu de um grupo de amigos que percebeu que tampinha, garrafa PET, papelão, latinha e lacre de alumínio, materiais que muita gente ainda descarta sem pensar duas vezes, podem virar renda quando coletados e vendidos para cooperativas de reciclagem.
           </p>
           <p>
             Toda a renda arrecadada com a venda desses materiais será revertida em ações sociais diretas: cestas básicas, kits de higiene, roupas e apoio a famílias em situação de vulnerabilidade na nossa região.

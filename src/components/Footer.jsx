@@ -41,6 +41,11 @@ function Footer({ navLinks }) {
                   <circle cx="12" cy="12" r="4" />
                 </svg>
               </a>
+              <a href="https://wa.me/5585981370578?text=Oi%2C%20vim%20do%20site%20da%20Converte%20A%C3%AD%2C%20quero%20ajudar" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" fill="none" strokeWidth="2">
+                  <path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.6L3 21l1.9-5.6A8.5 8.5 0 1 1 21 11.5z" />
+                </svg>
+              </a>
               <a href="#participe" aria-label="Participe" rel="noreferrer">
                 <svg viewBox="0 0 24 24" fill="none" strokeWidth="2">
                   <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -51,7 +56,10 @@ function Footer({ navLinks }) {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 ConverteAí. Todos os direitos reservados.</span>
+          <span className="footer-credit">
+            <img src="/logo.webp" alt="ConverteAí" className="footer-logo-small" />
+            ConverteAí. Todos os direitos reservados.
+          </span>
         </div>
       </div>
     </footer>
